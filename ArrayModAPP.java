@@ -47,37 +47,50 @@ public class ArrayModAPP {
 			int target = userinput.nextInt();
 			userinput.nextLine();
 			
-			// Search the string for that number to find its index:
-			int targetIndex = Arrays.binarySearch(integers, target);
-			
 			// Ask the user what they'd like to replace the number with:
-			System.out.format("\nWhat would you like to replace %d with? ", target);
-			int targetReplacement = userinput.nextInt();
-			userinput.nextLine();
+						System.out.format("\nWhat would you like to replace %d with? ", target);
+						int targetReplacement = userinput.nextInt();
+						userinput.nextLine();
 			
-			// Replace the number:
-			integers[targetIndex] = targetReplacement;
+			// Search the string for the target number to find its index and replace the target:
+			int index;
+			int targetIndex = -1; // if targetIndex stays -1 then the target is not in the array.
+			for (index = 0; index < length; index ++) {
+				if (integers[index] == target) {
+					targetIndex = index;
+					integers[targetIndex] = targetReplacement;
+				}
+			}
 			
-			// Read the user the new array:
-			System.out.println("\nThe new array is: " + Arrays.toString(integers));
+			if (targetIndex == -1) {
+				System.out.println("Sorry, that number was not in the array.");
+			}
+			else {
+				// Read the user the new array:
+				System.out.println("\nThe new array is: " + Arrays.toString(integers));
+			}
 			
 			// Ask the user if they would like to replace any more items:
+			Thread.sleep(1000);
 			System.out.print("\n\nWould you like to replace any more numbers? Type yes or no: ");
 			replace = userinput.nextLine();
 			replace = replace.toLowerCase();
+		}
 			
 		// Tell the user the program will now sort the array:
+		Thread.sleep(1000);
 		System.out.println("\nThe program will now sort the numbers in your array from lowest to highest:");
 		
 		// Sort the array and print it: 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Arrays.sort(integers);
 		System.out.println(Arrays.toString(integers));
 		
 		// Tell the user the program has ended:
-		System.out.println("The program has ended.");
+		Thread.sleep(1000);
+		System.out.println("\nThe program has ended.");
 		
-		}
+		
 		
 		
 		
